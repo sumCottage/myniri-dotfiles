@@ -258,7 +258,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
 
-    slowdown 2.0
+    slowdown 1.0
 
 
     workspace-switch {
