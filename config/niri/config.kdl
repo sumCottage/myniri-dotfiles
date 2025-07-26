@@ -248,13 +248,15 @@ layout {
         // bottom 64
     }
 }
-
+// SPAWN AT STARTUP
+spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "waybar"
 
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+// ANIMATIONS
 
 animations {
 
@@ -563,7 +565,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
-spawn-at-startup "xwayland-satellite"
+
 environment {
   DISPLAY ":0"
 }
