@@ -294,7 +294,7 @@ binds {
     Mod+C { spawn "flatpak" "run" "com.vscodium.codium"; }
     Mod+T { spawn "kitty";}
     Mod+Ctrl+N { spawn "swaync-client" "-t";}
-
+    Mod+Shift+T {spawn "~/.config/waybar/reload.sh";}
     
 
     Alt+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
