@@ -231,7 +231,7 @@ animations {
 
 
     workspace-switch {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.0001
+        spring damping-ratio=0.8 stiffness=700 epsilon=0.0001
     }
 
     window-movement {
@@ -244,7 +244,7 @@ animations {
 }
 
 window-rule {
-    geometry-corner-radius 8 8 8 8
+    geometry-corner-radius 0 0 0 0
     clip-to-geometry true
 }
 
@@ -277,12 +277,7 @@ window-rule {
     // block-out-from "screencast"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
+
 // BINDS
 binds {
 
