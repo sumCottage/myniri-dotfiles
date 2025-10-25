@@ -61,8 +61,7 @@ output "HDMI-A-1" {
 
     scale 1
 
-    transform "90"
-
+    
 
     position x=1280 y=0
 }
@@ -72,7 +71,7 @@ output "HDMI-A-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 10
     background-color "transparent"
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -120,7 +119,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 2
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -128,7 +127,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#8e9547ff"
+        active-color "#eb6f92"
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -156,13 +155,13 @@ layout {
         off
 
         width 1
-        active-color "#ffc87f"
+        active-color "#aaaaaaff"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
 
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f7f7f7ff" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
@@ -241,10 +240,16 @@ animations {
     horizontal-view-movement {
         spring damping-ratio=0.9 stiffness=500 epsilon=0.0001
     }
+    
+    window-open {
+        // Same as CSS cubic-bezier(0.05, 0.7, 0.1, 1)
+        curve "cubic-bezier" 0.025 0.2 0.1 1
+    }
+
 }
 
 window-rule {
-    geometry-corner-radius 0 0 0 0
+    geometry-corner-radius 8 8 8 8
     clip-to-geometry true
 }
 
@@ -542,7 +547,7 @@ prefer-no-csd
 layer-rule {
     // This is for swaybg; change for other wallpaper tools.
     // Find the right namespace by running niri msg layers.
-    match namespace="^swww-daemon$"
+    match namespace="^wallpaper$"
     place-within-backdrop true
 }
 
