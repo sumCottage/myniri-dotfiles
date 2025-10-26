@@ -30,15 +30,6 @@ input {
         // scroll-method "no-scroll"
     }
 
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // middle-emulation
-    }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     // warp-mouse-to-focus
@@ -48,10 +39,9 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
+
 // by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "HDMI-A-1" {
@@ -127,10 +117,10 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#eb6f92"
+        active-color "#ebbcba"
 
         // Color of the ring on inactive monitors.
-        inactive-color "#505050"
+        inactive-color "#ffffffff"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -220,6 +210,19 @@ spawn-at-startup "swww-daemon"
 spawn-at-startup "waybar"
 
 
+// Recommended (must install polkit-mate before hand) for elevation prompts
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+// This may be a different path on different distributions, the above is for the arch linux mate-polkit package
+
+// Starts DankShell
+spawn-at-startup "dms" "run"
+
+// If using niri newer than 271534e115e5915231c99df287bbfe396185924d (~aug 17 2025)
+// you can add this to disable built in config load errors since dank shell provides this
+config-notification {
+    disable-failed
+}
+
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // ANIMATIONS
@@ -230,17 +233,14 @@ animations {
 
 
     workspace-switch {
-        spring damping-ratio=0.8 stiffness=700 epsilon=0.0001
+        spring damping-ratio=0.9 stiffness=500 epsilon=0.0001
     }
 
     window-movement {
-        spring damping-ratio=0.6 stiffness=200 epsilon=0.0001
+        spring damping-ratio=0.9 stiffness=700 epsilon=0.0001
 
     }
-    horizontal-view-movement {
-        spring damping-ratio=0.9 stiffness=500 epsilon=0.0001
-    }
-    
+
     window-open {
         // Same as CSS cubic-bezier(0.05, 0.7, 0.1, 1)
         curve "cubic-bezier" 0.025 0.2 0.1 1
@@ -287,17 +287,17 @@ window-rule {
 binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+S { spawn "flatpak" "run" "io.gitlab.librewolf-community"; }
+    Mod+S { spawn "librewolf"; }
     Mod+E { spawn "nautilus"; }
     Mod+D { spawn "waypaper"; }
     Mod+Shift+Q { spawn "wlogout";}
-    Mod+C { spawn "flatpak" "run" "com.vscodium.codium"; }
+    Mod+C { spawn "flatpak run com.visualstudio.code"; }
     Mod+T { spawn "kitty";}
-    Mod+Ctrl+N { spawn "swaync-client" "-t";}
-    Mod+Shift+T {spawn "~/.config/waybar/reload.sh";}
+    
+   
     
 
-    Alt+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Alt+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle";}
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
